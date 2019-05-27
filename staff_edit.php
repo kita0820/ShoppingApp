@@ -11,9 +11,7 @@
     <?php
     try {
 
-        // $staff_code = $_POST['staffcode'];
         $staff_code = $_GET['staffcode'];
-
         $dsn = 'mysql:dbname=shop;host=localhost;charset=utf8';
         $user = 'root';
         $password = '';
@@ -30,6 +28,7 @@
 
         $dbh = null;
     } catch (Exception $e) {
+
         print 'ただいま障害により大変ご迷惑をお掛けしております。';
         exit();
     }
