@@ -12,7 +12,6 @@
 
     $pro_name = $_POST['name'];
     $pro_price = $_POST['price'];
-    $pro_gazou = $_FILES['gazou'];
 
     $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
     $pro_price = htmlspecialchars($pro_price, ENT_QUOTES, 'UTF-8');
