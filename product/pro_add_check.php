@@ -12,6 +12,7 @@
 
     $pro_name = $_POST['name'];
     $pro_price = $_POST['price'];
+    $pro_gazou = $_FILES['gazou'];
 
     $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
     $pro_price = htmlspecialchars($pro_price, ENT_QUOTES, 'UTF-8');
@@ -46,6 +47,20 @@
         print '<input type="submit" value="OK">';
         print '</from>';
     }
+
+    if ($pro_gazou['size'] > 0) {
+        if ($pro_gazou['size'] > 1000000) {
+            print '画像が大き過ぎます';
+        } else {
+            move_uploaded_file($pro_gazou['tmp_name'], './gazou/' . $pro_gazou['name']);
+            print '<img src="./gazou/' . $pro_gazou['name'] . '">';
+            print '<br>';
+        }
+    }
+
+    print '<input type="hidden" name="price" value="' . $pro_price . '">';
+    print '<input type="hidden" name="gazou_name" value="' . $pro_gazou['name'] . '">';
+    print '<br>';
 
     ?>
 
