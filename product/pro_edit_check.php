@@ -13,6 +13,8 @@
     $pro_code = $_POST['code'];
     $pro_name = $_POST['name'];
     $pro_price = $_POST['price'];
+    $pro_gazou_name = $_POST['gazou_name_old'];
+    $pro_gazou= $_FILES['gazou'];
 
     $pro_code = htmlspecialchars($pro_code, ENT_QUOTES, 'UTF-8');
     $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
@@ -34,7 +36,17 @@
         print '<br>';
     }
 
-    if ($pro_name == '' || $pro_price == '') {
+    if ($pro_gazou['size'] > 0) {
+        if ($pro_gazou['size'] > 1000000) {
+            print '画像が大き過ぎます';
+        } esle {
+            move_upload_file($pro_gazou['tmp_name'],'./gazou/'.$pro_gazou['name']);
+            print '<img src="./gazou/'. $pro_gazou['name'].'">';
+            print '<br>';
+        }
+    }
+
+    if ($pro_name == '' || $preg_ ||  $pro_price == '') {
         print '<form>';
         print '<input type="button" onclick="history.back()" value="戻る">';
         print '</form>';
